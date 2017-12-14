@@ -81,7 +81,7 @@ module.exports = {
     overlay: true
   },
   performance: {
-    hints: false
+    hints: true
   },
   devtool: '#eval-source-map'
 }
