@@ -11,6 +11,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [path.resolve(__dirname, './src')]
+      },
+      {
         test: /\.css$/,
         use: [
           'vue-style-loader',
@@ -81,7 +87,7 @@ module.exports = {
     overlay: true
   },
   performance: {
-    hints: true
+    hints: false
   },
   devtool: '#eval-source-map'
 }
