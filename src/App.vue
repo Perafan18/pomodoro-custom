@@ -9,24 +9,38 @@ export default {
   name: 'app',
   data () {
     return {
-      title: 'Welcome to Your Vue.js App',
+      title: 'Pomodoro Custom',
       timeout: null,
-      showTime: ''
+      showTime: '',
+      seconds: 0,
+      minutes: 0,
+      hours: 0
     }
   },
 
   mounted () {
-    this.timeout = setInterval(() => this.getTime(), 1000)
+    this.timeout = setInterval(() => this.initTime(), 1000)
   },
 
   methods: {
-    getTime () {
-      let datetime = new Date()
-      let hour = datetime.getHours()
-      let min = datetime.getMinutes()
-      let sec = datetime.getSeconds()
+    initTime () {
+      this.seconds++
 
-      this.showTime = `${hour}:${min}:${sec}`
+      if (this.seconds <= 9) {
+        this.seconds = '0' + this.seconds
+      }
+
+      if (this.seconds >= 60) {
+        this.minutes++
+        this.seconds = 0
+      }
+
+      if (this.minutes >= 60) {
+        this.hours++
+        this.minutes = 0
+      }
+
+      this.showTime = `${this.hours}:${this.minutes}:${this.seconds}`
     }
   },
 
