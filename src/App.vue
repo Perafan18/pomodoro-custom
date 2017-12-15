@@ -16,9 +16,9 @@ export default {
     return {
       title: 'Pomodoro Custom',
       timeout: null,
-      showTime: '0:0:00',
-      seconds: 0,
-      minutes: 0,
+      showTime: '0:00:00',
+      seconds: '00',
+      minutes: '00',
       hours: 0
     }
   },
@@ -37,7 +37,11 @@ export default {
 
       if (this.seconds >= 60) {
         this.minutes++
-        this.seconds = 0
+        this.seconds = '00'
+
+        if (this.minutes <= 9) {
+          this.minutes = '0' + this.minutes
+        }
       }
 
       if (this.minutes >= 60) {
@@ -54,14 +58,15 @@ export default {
 
     stop () {
       this.pause()
-      this.seconds = 0
-      this.minutes = 0
+      this.seconds = '00'
+      this.minutes = '00'
       this.hours = 0
-      this.showTime = '0:0:00'
+      this.showTime = '0:00:00'
     }
   },
 
   beforeDestroy () {
+    this.pause()
     this.pause()
   }
 }
