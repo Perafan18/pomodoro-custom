@@ -2,6 +2,11 @@
   #app
     h1 {{ title }}
     h2 {{ showTime }}
+
+    section
+      button(@click="start") Iniciar
+      button(@click="pause") Pausar
+      button(@click="stop") Detener
 </template>
 
 <script>
@@ -11,18 +16,18 @@ export default {
     return {
       title: 'Pomodoro Custom',
       timeout: null,
-      showTime: '',
+      showTime: '0:0:00',
       seconds: 0,
       minutes: 0,
       hours: 0
     }
   },
 
-  mounted () {
-    this.timeout = setInterval(() => this.initTime(), 1000)
-  },
-
   methods: {
+    start () {
+      this.timeout = setInterval(() => this.initTime(), 1000)
+    },
+
     initTime () {
       this.seconds++
 
@@ -41,11 +46,23 @@ export default {
       }
 
       this.showTime = `${this.hours}:${this.minutes}:${this.seconds}`
+    },
+
+    pause () {
+      clearTimeout(this.timeout)
+    },
+
+    stop () {
+      this.pause()
+      this.seconds = 0
+      this.minutes = 0
+      this.hours = 0
+      this.showTime = '0:0:00'
     }
   },
 
   beforeDestroy () {
-    clearTimeout(this.timeout)
+    this.pause()
   }
 }
 </script>
