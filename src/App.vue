@@ -4,9 +4,9 @@
     h2 {{ showTime }}
 
     section
-      button(@click="start") Iniciar
-      button(@click="pause") Pausar
-      button(@click="stop") Detener
+      button(:disabled="isRunning" @click="start") Start
+      button(@click="pause") Pause
+      button(@click="stop") Stop
 </template>
 
 <script>
@@ -18,7 +18,8 @@ export default {
       timeout: null,
       seconds: '00',
       minutes: '00',
-      hours: 0
+      hours: 0,
+      isRunning: false
     }
   },
 
@@ -30,6 +31,7 @@ export default {
 
   methods: {
     start () {
+      this.isRunning = true
       this.timeout = setInterval(() => this.initTime(), 1000)
     },
 
@@ -56,6 +58,7 @@ export default {
     },
 
     pause () {
+      this.isRunning = false
       clearTimeout(this.timeout)
     },
 
