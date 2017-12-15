@@ -6,11 +6,23 @@
       button(:disabled="isRunning" @click="start") Start
       button(@click="pause") Pause
       button(@click="stop") Stop
+    context-component(
+      title="Test"
+      timeDuration="0:00:10"
+      :currentTime="showTime"
+    )
 </template>
 
 <script>
+import ContextComponent from './ContextComponent'
+
 export default {
-  name: 'app',
+  name: 'timer',
+
+  components: {
+    ContextComponent
+  },
+
   data () {
     return {
       timeout: null,

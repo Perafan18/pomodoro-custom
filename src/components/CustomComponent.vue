@@ -13,6 +13,8 @@
 
 <script>
 export default {
+  name: 'custom',
+
   data () {
     return {
       pomodoroTime: 25,
