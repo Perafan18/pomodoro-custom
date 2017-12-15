@@ -9,7 +9,6 @@
     context-component(
       name="Test"
       timeDuration="0:00:10"
-      :currentTime="showTime"
     )
 </template>
 
@@ -89,7 +88,6 @@ export default {
 
   watch: {
     seconds (seconds) {
-      console.log(seconds)
       this.setCurrentTime({ currentTime: this.showTime })
     }
   },

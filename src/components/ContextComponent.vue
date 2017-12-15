@@ -7,13 +7,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  props: ['name', 'timeDuration', 'currentTime'],
+  props: ['name', 'timeDuration'],
 
   data () {
     return {
       isFinish: false
     }
+  },
+
+  computed: {
+    ...mapState([
+      'currentTime'
+    ])
   },
 
   watch: {
