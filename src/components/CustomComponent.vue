@@ -8,6 +8,7 @@
       input(v-model="shortBreakTime" type="number" id="shortBreakTime")
       label(for="longBreakTime") Long break time:
       input(v-model="longBreakTime" type="number" id="longBreakTime")
+    p {{ getCustom }}
 </template>
 
 <script>
@@ -24,7 +25,8 @@ export default {
     getCustom () {
       return `
         Pomodoro time: ${this.pomodoroTime}
-        Short break time:
+        Short break time: ${this.shortBreakTime}
+        Long break time: ${this.longBreakTime}
       `
     }
   }
