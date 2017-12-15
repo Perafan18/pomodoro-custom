@@ -31,6 +31,7 @@ export default {
 
   methods: {
     start () {
+      if (this.isRunning) return
       this.isRunning = true
       this.timeout = setInterval(() => this.initTime(), 1000)
     },
