@@ -16,10 +16,15 @@ export default {
     return {
       title: 'Pomodoro Custom',
       timeout: null,
-      showTime: '0:00:00',
       seconds: '00',
       minutes: '00',
       hours: 0
+    }
+  },
+
+  computed: {
+    showTime () {
+      return `${this.hours}:${this.minutes}:${this.seconds}`
     }
   },
 
@@ -48,8 +53,6 @@ export default {
         this.hours++
         this.minutes = 0
       }
-
-      this.showTime = `${this.hours}:${this.minutes}:${this.seconds}`
     },
 
     pause () {
@@ -61,7 +64,6 @@ export default {
       this.seconds = '00'
       this.minutes = '00'
       this.hours = 0
-      this.showTime = '0:00:00'
     }
   },
 
