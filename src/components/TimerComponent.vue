@@ -7,13 +7,15 @@
       button(@click="pause") Pause
       button(@click="stop") Stop
     context-component(
-      title="Test"
+      name="Test"
       timeDuration="0:00:10"
       :currentTime="showTime"
     )
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import ContextComponent from './ContextComponent'
 
 export default {
@@ -40,6 +42,10 @@ export default {
   },
 
   methods: {
+    ...mapMutations([
+      'setCurrentTime'
+    ]),
+
     start () {
       if (this.isRunning) return
       this.isRunning = true
@@ -78,6 +84,13 @@ export default {
       this.seconds = '00'
       this.minutes = '00'
       this.hours = 0
+    }
+  },
+
+  watch: {
+    seconds (seconds) {
+      console.log(seconds)
+      this.setCurrentTime({ currentTime: this.showTime })
     }
   },
 

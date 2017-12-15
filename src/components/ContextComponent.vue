@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    h2 {{ this.title }}
+    h2 {{ this.name }}
 
     div(v-if="isFinish")
       h3 Finish!
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['title', 'timeDuration', 'currentTime'],
+  props: ['name', 'timeDuration', 'currentTime'],
 
   data () {
     return {
