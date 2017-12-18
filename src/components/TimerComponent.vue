@@ -6,23 +6,13 @@
       button(:disabled="isRunning" @click="start") Start
       button(@click="pause") Pause
       button(@click="stop") Stop
-    context-component(
-      name="Test"
-      timeDuration="0:00:10"
-    )
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 
-import ContextComponent from './ContextComponent'
-
 export default {
   name: 'timer',
-
-  components: {
-    ContextComponent
-  },
 
   data () {
     return {

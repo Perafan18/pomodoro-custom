@@ -3,19 +3,25 @@
     main
       h1 Pomodoro Custom
       timer-component
+      context-component(
+        name="Test"
+        timeDuration="0:00:10"
+      )
       custom-component
 </template>
 
 <script>
 import TimerComponent from './components/TimerComponent'
 import CustomComponent from './components/CustomComponent'
+import ContextComponent from './components/ContextComponent'
 
 export default {
   name: 'app',
 
   components: {
     TimerComponent,
-    CustomComponent
+    CustomComponent,
+    ContextComponent
   }
 }
 </script>

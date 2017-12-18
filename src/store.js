@@ -5,13 +5,13 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    currentContext: '',
+    currentContext: {},
     currentTime: ''
   },
 
   mutations: {
-    setCurrentContext (state, currentContext) {
-      state.currentContext = currentContext
+    setCurrentContext (state, payload) {
+      state.currentContext = payload.currentContext
     },
 
     setCurrentTime (state, payload) {
