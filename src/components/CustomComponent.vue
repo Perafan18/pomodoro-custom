@@ -48,6 +48,20 @@ export default {
     }
   },
 
+  watch: {
+    'pomodoro.time': function () {
+      this.setContext(this.pomodoro.name, this.pomodoro.time)
+    },
+
+    'shortBreak.time': function () {
+      this.setContext(this.shortBreak.name, this.shortBreak.time)
+    },
+
+    'longBreak.time': function () {
+      this.setContext(this.longBreak.name, this.longBreak.time)
+    }
+  },
+
   computed: {
     getCustom () {
       return `
