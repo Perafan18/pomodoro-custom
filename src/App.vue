@@ -2,9 +2,9 @@
   #app(class="container")
     main(role="main")
       header-component
+      custom-component
       timer-component
       context-component
-      custom-component
 </template>
 
 <script>

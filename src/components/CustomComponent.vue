@@ -1,11 +1,13 @@
 <template lang="pug">
   section
-    h2 Custom
-    h3 Select
-    p(@click="setContext(pomodoro.name, pomodoro.time)") Pomodoro
-    p(@click="setContext(shortBreak.name, shortBreak.time)") short Break
-    p(@click="setContext(longBreak.name, longBreak.time)") Long Break
-    form
+    .row
+      .col.s12.m4.center-align
+        span(class="deep-orange-text text-lighten-2 select" @click="setContext(pomodoro.name, pomodoro.time)") Pomodoro
+      .col.s12.m4.center-align
+        span(class="deep-orange-text text-lighten-2 select" @click="setContext(shortBreak.name, shortBreak.time)") Short Break
+      .col.s12.m4.center-align
+        span(class="deep-orange-text text-lighten-2 select" @click="setContext(longBreak.name, longBreak.time)") Long Break
+    form()
       label(for="pomodoroTime") Pomodoro time:
       input(v-model="pomodoro.time" type="text" id="pomodoroTime")
       label(for="shortBreakTime") Short break time:
@@ -73,3 +75,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .select {
+    font-size: 25pt;
+    cursor: pointer;
+  }
+</style>
