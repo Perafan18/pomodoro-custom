@@ -1,11 +1,13 @@
 <template lang="pug">
-  section
-    h2 {{ showTime }}
+  section(class="row center-align")
+    h1 {{ showTime }}
 
-    section
-      button(:disabled="isRunning" @click="start") Start
-      button(@click="pause") Pause
-      button(@click="stop") Stop
+    button(:disabled="isRunning" @click="start" class="btn-large waves-effect waves-light")
+      i(class="large material-icons center" ) play_arrow
+    button(@click="pause" class="btn-large waves-effect waves-light")
+      i(class="large material-icons center") pause
+    button(@click="stop" class="btn-large waves-effect waves-light")
+      i(class="large material-icons center") stop
 </template>
 
 <script>
@@ -88,3 +90,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .btn-large {
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 5rem;
+  }
+</style>
