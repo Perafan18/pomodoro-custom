@@ -1,12 +1,9 @@
 <template lang="pug">
-  #app
-    main
+  #app(class="container")
+    main(role="main")
       h1 Pomodoro Custom
       timer-component
-      context-component(
-        name="Test"
-        timeDuration="0:00:10"
-      )
+      context-component
       custom-component
 </template>
 
