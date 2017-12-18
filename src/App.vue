@@ -1,7 +1,7 @@
 <template lang="pug">
   #app(class="container")
     main(role="main")
-      h1 Pomodoro Custom
+      header-component
       timer-component
       context-component
       custom-component
@@ -11,11 +11,13 @@
 import TimerComponent from './components/TimerComponent'
 import CustomComponent from './components/CustomComponent'
 import ContextComponent from './components/ContextComponent'
+import HeaderComponent from './layout/HeaderComponent'
 
 export default {
   name: 'app',
 
   components: {
+    HeaderComponent,
     TimerComponent,
     CustomComponent,
     ContextComponent
