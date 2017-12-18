@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    h2 {{ this.name }}
+    h2 {{ this.currentContext.name }}
 
     div(v-if="isFinish")
       h3 Finish!
@@ -10,8 +10,6 @@
 import { mapState } from 'vuex'
 
 export default {
-  props: ['name', 'timeDuration'],
-
   data () {
     return {
       isFinish: false
@@ -20,13 +18,14 @@ export default {
 
   computed: {
     ...mapState([
-      'currentTime'
+      'currentTime',
+      'currentContext'
     ])
   },
 
   watch: {
     currentTime (currentTime) {
-      if (currentTime === this.timeDuration) {
+      if (currentTime === this.currentContext.time) {
         this.isFinish = true
       }
     }
