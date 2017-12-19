@@ -8,6 +8,9 @@
 </template>
 
 <script>
+import jquery from 'jquery/dist/jquery.min'
+import 'materialize-css/dist/js/materialize.min'
+
 import TimerComponent from './components/TimerComponent'
 import CustomComponent from './components/CustomComponent'
 import ContextComponent from './components/ContextComponent'
@@ -21,6 +24,10 @@ export default {
     TimerComponent,
     CustomComponent,
     ContextComponent
+  },
+
+  mounted () {
+    window.$ = jquery
   }
 }
 </script>
