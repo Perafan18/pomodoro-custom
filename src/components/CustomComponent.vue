@@ -23,7 +23,10 @@
           br
           small ({{ longBreak.time }})
 
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+    .fixed-action-btn
+      a(class="btn-floating btn-large red modal-trigger" href="#modal1")
+        i.large.material-icons mode_edit
+
     div(class="modal bottom-sheet" id="modal1")
       .modal-content
         .row
