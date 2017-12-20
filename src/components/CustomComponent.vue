@@ -2,23 +2,23 @@
   section
     .row
       .col.s12.m4.center-align
-        span(
-          class="deep-orange-text text-lighten-2 select"
-          @click="setContext(pomodoro.name, pomodoro.time)"
+        div(
+          v-bind:class="classSelect(pomodoro)"
+          @click="setContext(pomodoro)"
         ) Pomodoro
             br
             small ({{ pomodoro.time }})
       .col.s12.m4.center-align
-        span(
-          class="deep-orange-text text-lighten-2 select"
-          @click="setContext(shortBreak.name, shortBreak.time)"
+        div(
+          :class="classSelect(shortBreak)"
+          @click="setContext(shortBreak)"
         ) Short Break
           br
           small ({{ shortBreak.time }})
       .col.s12.m4.center-align
-        span(
-          class="deep-orange-text text-lighten-2 select"
-          @click="setContext(longBreak.name, longBreak.time)"
+        div(
+          :class="classSelect(longBreak)"
+          @click="setContext(longBreak)"
         ) Long Break
           br
           small ({{ longBreak.time }})
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'custom',
@@ -55,17 +55,24 @@ export default {
     return {
       pomodoro: {
         name: 'Pomodoro',
-        time: '00:25:00'
+        time: '00:25:00',
+        selected: false
       },
       shortBreak: {
         name: 'Short Break',
-        time: '00:05:00'
+        time: '00:05:00',
+        selected: false
       },
       longBreak: {
         name: 'Long Break',
-        time: '00:10:00'
+        time: '00:10:00',
+        selected: false
       }
     }
+  },
+
+  computed: {
+    ...mapState(['currentContext'])
   },
 
   methods: {
@@ -73,8 +80,18 @@ export default {
       'setCurrentContext'
     ]),
 
-    setContext (name, time) {
-      this.setCurrentContext({ currentContext: { name, time } })
+    setContext (timer) {
+      timer.selected = !timer.selected
+      this.setCurrentContext({ currentContext: { name: timer.name, time: timer.time } })
+    },
+
+    classSelect (timer) {
+      return {
+        'deep-orange-text': true,
+        'text-lighten-2': true,
+        'select': true,
+        'selected': timer.name === this.currentContext.name
+      }
     }
   },
 
@@ -89,6 +106,27 @@ export default {
 
     'longBreak.time': function () {
       this.setContext(this.longBreak.name, this.longBreak.time)
+    },
+
+    'pomodoro.selected': function (selected) {
+      if (selected) {
+        this.longBreak.selected = false
+        this.shortBreak.selected = false
+      }
+    },
+
+    'shortBreak.selected': function (selected) {
+      if (selected) {
+        this.longBreak.selected = false
+        this.pomodoro.selected = false
+      }
+    },
+
+    'longBreak.selected': function (selected) {
+      if (selected) {
+        this.shortBreak.selected = false
+        this.pomodoro.selected = false
+      }
     }
   },
 
@@ -103,4 +141,9 @@ export default {
     font-size: 25pt;
     cursor: pointer;
   }
+
+  .selected, .select:hover {
+    background-color: #f5f5f5;
+  }
+
 </style>
