@@ -55,17 +55,17 @@ export default {
     return {
       pomodoro: {
         name: 'Pomodoro',
-        time: '00:25:00',
+        time: '0:25:00',
         selected: false
       },
       shortBreak: {
         name: 'Short Break',
-        time: '00:05:00',
+        time: '0:05:00',
         selected: false
       },
       longBreak: {
         name: 'Long Break',
-        time: '00:10:00',
+        time: '0:10:00',
         selected: false
       }
     }
@@ -97,15 +97,15 @@ export default {
 
   watch: {
     'pomodoro.time': function () {
-      this.setContext(this.pomodoro.name, this.pomodoro.time)
+      this.setContext(this.pomodoro)
     },
 
     'shortBreak.time': function () {
-      this.setContext(this.shortBreak.name, this.shortBreak.time)
+      this.setContext(this.shortBreak)
     },
 
     'longBreak.time': function () {
-      this.setContext(this.longBreak.name, this.longBreak.time)
+      this.setContext(this.longBreak)
     },
 
     'pomodoro.selected': function (selected) {
